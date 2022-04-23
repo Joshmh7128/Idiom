@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
         moveH = playerHead.right * pAxisH;
 
         RaycastHit groundedHit;
-        Physics.Raycast(transform.position, Vector3.down, out groundedHit, 1.75f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
+        Physics.Raycast(transform.position, Vector3.down, out groundedHit, 1.5f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
 
         // movement application
         // jump calculations
@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
             }
             else if (!landed)
             {
-                playerJumpVelocity = -0.5f;
+                playerJumpVelocity = 0f;
                 landed = true;
             }
         }

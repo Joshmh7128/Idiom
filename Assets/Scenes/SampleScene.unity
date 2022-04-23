@@ -4656,7 +4656,7 @@ Transform:
   m_GameObject: {fileID: 472872382}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.37, y: -38.14, z: 124.49}
-  m_LocalScale: {x: 40, y: 1, z: 10}
+  m_LocalScale: {x: 40, y: 1, z: 21.150076}
   m_Children: []
   m_Father: {fileID: 1565989735}
   m_RootOrder: 15
@@ -6016,8 +6016,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 594061981}
   m_LocalRotation: {x: -0, y: -0, z: -1, w: 0.0000029504295}
-  m_LocalPosition: {x: 2.57, y: -38.63, z: 107}
-  m_LocalScale: {x: 40, y: 1, z: 10}
+  m_LocalPosition: {x: 2.57, y: -38.63, z: 105.4}
+  m_LocalScale: {x: 40, y: 1, z: 21.150076}
   m_Children: []
   m_Father: {fileID: 1753170490}
   m_RootOrder: 15
@@ -8203,8 +8203,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 940097404}
   m_LocalRotation: {x: -0, y: -0, z: -1, w: 0.0000029504295}
-  m_LocalPosition: {x: 2.57, y: -38.63, z: 141.7}
-  m_LocalScale: {x: 40, y: 1, z: 10}
+  m_LocalPosition: {x: 2.57, y: -38.63, z: 142.8}
+  m_LocalScale: {x: 40, y: 1, z: 21.150076}
   m_Children: []
   m_Father: {fileID: 1753170490}
   m_RootOrder: 23
@@ -14479,8 +14479,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1483162959}
   m_LocalRotation: {x: -0.000000014767564, y: 0.0000000019908968, z: -0.13360682, w: 0.99103445}
-  m_LocalPosition: {x: 5.8, y: -44.12, z: 94.6}
-  m_LocalScale: {x: 54.193233, y: 1.06, z: 8.197545}
+  m_LocalPosition: {x: 5.8, y: -44.12, z: 92.7}
+  m_LocalScale: {x: 54.193233, y: 1.06, z: 5.6358943}
   m_Children: []
   m_Father: {fileID: 1565989735}
   m_RootOrder: 19
@@ -14912,8 +14912,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1513557242}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.37, y: -38.14, z: 159.18999}
-  m_LocalScale: {x: 40, y: 1, z: 10}
+  m_LocalPosition: {x: 0.37, y: -38.14, z: 161.1}
+  m_LocalScale: {x: 40, y: 1, z: 21.150076}
   m_Children: []
   m_Father: {fileID: 1565989735}
   m_RootOrder: 26
@@ -18117,7 +18117,7 @@ MonoBehaviour:
   characterController: {fileID: 1768078461}
   moveSpeed: 7
   gravity: -19.62
-  jumpVelocity: 2.5
+  jumpVelocity: 3
   playerJumpVelocity: 0
   aimSensitivity: 600
   minYAngle: -90
@@ -18131,7 +18131,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1768078460}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.5, z: 0}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1725272976}
