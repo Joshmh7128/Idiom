@@ -13,8 +13,17 @@ public class PlayerController : MonoBehaviour
     float playerJumpVelocity, gravityValue, verticalVelocity; // hidden because is calculated
 
     [Header("Camera")]
-    [SerializeField] float aimSensitivity, minYAngle, maxYAngle;
+    [SerializeField] float aimSensitivity;
+    [SerializeField] float minYAngle, maxYAngle;
     float currentSensitivity, yRotate, xRotate;
+
+    [Header("Dimensions")]
+    DimensionManager dimensionManager;
+
+    private void Start()
+    {
+        dimensionManager = FindObjectOfType<DimensionManager>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -57,8 +66,14 @@ public class PlayerController : MonoBehaviour
         Mathf.SmoothStep(xRotate, finalxRotate, 5 * Time.deltaTime);
         Mathf.SmoothStep(yRotate, finalyRotate, 5 * Time.deltaTime);
 
-        // apply it to our torso
+        // apply it to our head
         playerHead.eulerAngles = new Vector3(finalyRotate, finalxRotate, 0f);
+
+        // swapping
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            dimensionManager.DimensionSwap();
+        }
 
     }
 }
