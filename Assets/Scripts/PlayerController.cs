@@ -9,8 +9,9 @@ public class PlayerController : MonoBehaviour
     Vector3 moveH, moveV, move;
     [SerializeField] Transform playerHead;
     [SerializeField] CharacterController characterController; // our character controller
-    [SerializeField] float moveSpeed, gravity, jumpVelocity; // set in editor for controlling
-    float playerJumpVelocity, gravityValue, verticalVelocity; // hidden because is calculated
+    [SerializeField] float moveSpeed, gravity, jumpVelocity, playerJumpVelocity; // set in editor for controlling
+    float gravityValue, verticalVelocity; // hidden because is calculated
+    bool landed;
 
     [Header("Camera")]
     [SerializeField] float aimSensitivity;
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Dimensions")]
     DimensionManager dimensionManager;
+    [SerializeField] Transform respawnPoint;
 
     private void Start()
     {
@@ -36,16 +38,33 @@ public class PlayerController : MonoBehaviour
         moveV = playerHead.forward * pAxisV;
         moveH = playerHead.right * pAxisH;
 
-        // jumping
-        if (Input.GetKeyDown(KeyCode.Space) && characterController.isGrounded)
-        {
-            playerJumpVelocity = Mathf.Sqrt(jumpVelocity * -3.0f * gravity);
-        }
+        RaycastHit groundedHit;
+        Physics.Raycast(transform.position, Vector3.down, out groundedHit, 1.75f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
 
         // movement application
         // jump calculations
         gravityValue = gravity;
-        playerJumpVelocity += gravityValue * Time.deltaTime;
+
+        if (groundedHit.transform == null)
+        {
+            playerJumpVelocity += gravityValue * Time.deltaTime;
+            landed = false;
+        } else if (groundedHit.transform != null)
+        {
+            // jumping
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                playerJumpVelocity = Mathf.Sqrt(jumpVelocity * -3.0f * gravity);
+            }
+            else if (!landed)
+            {
+                playerJumpVelocity = -0.5f;
+                landed = true;
+            }
+        }
+
+
+
         // verticalJumpPadVelocity = playerJumpPadVelocity += gravityValue * Time.deltaTime;
         verticalVelocity = playerJumpVelocity;
         move = new Vector3((moveH.x + moveV.x), verticalVelocity / moveSpeed, (moveH.z + moveV.z));
@@ -75,5 +94,15 @@ public class PlayerController : MonoBehaviour
             dimensionManager.DimensionSwap();
         }
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.tag == "Deadly")
+        {
+            characterController.enabled = false;
+            transform.position = respawnPoint.position;
+            characterController.enabled = true;
+        }
     }
 }
