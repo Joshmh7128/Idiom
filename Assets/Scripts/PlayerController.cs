@@ -19,9 +19,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+
         // declare our motion
-        float pAxisV = Input.GetAxis("Vertical");
-        float pAxisH = Input.GetAxis("Horizontal");
+        float pAxisV = Input.GetAxisRaw("Vertical");
+        float pAxisH = Input.GetAxisRaw("Horizontal");
         moveV = playerHead.forward * pAxisV;
         moveH = playerHead.right * pAxisH;
 
@@ -38,15 +40,16 @@ public class PlayerController : MonoBehaviour
         // verticalJumpPadVelocity = playerJumpPadVelocity += gravityValue * Time.deltaTime;
         verticalVelocity = playerJumpVelocity;
         move = new Vector3((moveH.x + moveV.x), verticalVelocity / moveSpeed, (moveH.z + moveV.z));
+        characterController.Move(move * Time.deltaTime * moveSpeed);
 
         // our camera control
         currentSensitivity = aimSensitivity;
         // run math to rotate the head of the player as we move the mouse
-        yRotate += (Input.GetAxis("Mouse Y") * -currentSensitivity * Time.fixedDeltaTime);
+        yRotate += (Input.GetAxis("Mouse Y") * -currentSensitivity * Time.deltaTime);
         // clamp the rotation so we don't go around ourselves
         yRotate = Mathf.Clamp(yRotate, minYAngle, maxYAngle);
         // calculate our X rotation
-        xRotate += (Input.GetAxis("Mouse Y") * -currentSensitivity * Time.fixedDeltaTime);
+        xRotate += (Input.GetAxis("Mouse X") * currentSensitivity * Time.deltaTime);
         // add in our rotate mods if we have any
         float finalxRotate = xRotate;
         float finalyRotate = yRotate;
